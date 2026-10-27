@@ -1,0 +1,14 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+
+# Configuração local e credenciais
+.env
+.env.*
+!.env.example
+.aws/
+.codex/
+.agents/
+*.log
+.DS_Store

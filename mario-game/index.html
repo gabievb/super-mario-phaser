@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#f5f6f2" />
+        <title>Super Mario | Phaser Playground</title>
+        <link rel="icon" href="data:," />
+        <link rel="stylesheet" href="/style.css" />
+    </head>
+    <body>
+        <div id="app">
+            <header class="site-header">
+                <a
+                    class="brand"
+                    href="./"
+                    aria-label="Phaser Playground, inicio"
+                    ><span class="brand-mark">P<span>.</span></span
+                    ><span
+                        >PHASER<span class="brand-light">PLAYGROUND</span></span
+                    ></a
+                >
+                <span class="build-label"
+                    ><span class="live-dot"></span> PILOTO 001</span
+                >
+                <a
+                    class="source-link"
+                    href="https://phaser.io/"
+                    target="_blank"
+                    rel="noreferrer"
+                    >Feito com Phaser <i data-lucide="arrow-up-right"></i
+                ></a>
+            </header>
+            <main>
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">UM CLASSICO. UMA NOVA PARTIDA.</p>
+                        <h1>
+                            SUPER <span>MARIO</span
+                            ><span class="title-dot">.</span>
+                        </h1>
+                    </div>
+                    <div class="level-label">
+                        <span class="level-squares" aria-hidden="true"
+                            ><span data-world-step="1" class="world-reached"
+                                >&#9632;</span
+                            >
+                            <span data-world-step="2">&#9632;</span>
+                            <span data-world-step="3">&#9632;</span></span
+                        >
+                        <span id="current-world-label">MUNDO 1 / 3</span>
+                    </div>
+                </div>
+                <section
+                    class="game"
+                    aria-label="Super Mario, fase de plataforma"
+                >
+                    <div class="game-toolbar">
+                        <div class="game-identity">
+                            <span class="live-dot"></span
+                            ><span id="game-status">EM JOGO</span
+                            ><span class="toolbar-divider"></span
+                            ><span class="level-name">CAMPOS VERDES</span>
+                        </div>
+                        <div class="game-tools">
+                            <button
+                                id="sound"
+                                class="icon-button"
+                                aria-label="Desativar som"
+                                aria-pressed="true"
+                                title="Desativar som"
+                            >
+                                <i data-lucide="volume-2"></i>
+                            </button>
+                            <button
+                                id="restart"
+                                class="icon-button"
+                                aria-label="Reiniciar fase"
+                                title="Reiniciar fase"
+                            >
+                                <i data-lucide="rotate-ccw"></i>
+                            </button>
+                            <button
+                                id="pause"
+                                class="icon-button"
+                                aria-label="Pausar jogo"
+                                title="Pausar jogo"
+                            >
+                                <i data-lucide="pause"></i>
+                            </button>
+                            <span class="toolbar-divider"></span>
+                            <button
+                                id="fullscreen"
+                                class="icon-button"
+                                aria-label="Tela cheia"
+                                title="Tela cheia"
+                            >
+                                <i data-lucide="maximize"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="stage">
+                        <div
+                            id="phaser-container"
+                            tabindex="0"
+                            role="application"
+                            aria-label="Jogo de plataforma. Setas ou A e D para mover, espaco para pular, P para pausar."
+                        ></div>
+                        <div class="hud" aria-label="Placar">
+                            <div class="hud-stat">
+                                <span class="hud-label">PONTOS</span
+                                ><strong id="score">000000</strong>
+                            </div>
+                            <div class="hud-stat">
+                                <span class="hud-label">MOEDAS</span
+                                ><strong
+                                    ><span
+                                        class="coin-icon"
+                                        aria-hidden="true"
+                                    ></span
+                                    ><span id="coins">00</span></strong
+                                >
+                            </div>
+                            <div class="hud-stat">
+                                <span class="hud-label">VIDAS</span
+                                ><strong
+                                    ><span class="heart-icon" aria-hidden="true"
+                                        >&#9829;</span
+                                    >
+                                    <span id="lives">03</span></strong
+                                >
+                            </div>
+                            <div class="hud-stat time-stat">
+                                <span class="hud-label">TEMPO</span
+                                ><strong
+                                    ><i data-lucide="timer"></i
+                                    ><span id="time">180</span></strong
+                                >
+                            </div>
+                        </div>
+                        <div class="world-tag">1 &#8212; 1</div>
+                        <dialog id="game-dialog" aria-labelledby="dialog-title">
+                            <span class="dialog-eyebrow" id="dialog-eyebrow"
+                                >INTERVALO</span
+                            >
+                            <h2 id="dialog-title">Jogo pausado</h2>
+                            <p id="dialog-detail">A aventura continua daqui.</p>
+                            <button id="dialog-primary" class="primary-button">
+                                <i data-lucide="play"></i><span>Continuar</span>
+                            </button>
+                            <button id="dialog-restart" class="text-button">
+                                Recomecar fase
+                            </button>
+                        </dialog>
+                    </div>
+                    <div class="game-footer">
+                        <span
+                            ><span class="live-dot"></span>
+                            <span id="footer-status"
+                                >A aventura esta so comecando.</span
+                            ></span
+                        ><span class="engine-label"
+                            >PHASER 3 <span class="muted">/</span> ARCADE
+                            PHYSICS</span
+                        >
+                    </div>
+                    <div class="touch-controls" aria-label="Controles de toque">
+                        <div>
+                            <button
+                                data-control="left"
+                                aria-label="Mover para esquerda"
+                            >
+                                <i data-lucide="arrow-left"></i></button
+                            ><button
+                                data-control="right"
+                                aria-label="Mover para direita"
+                            >
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                        <button data-control="jump" aria-label="Pular">
+                            <i data-lucide="arrow-up"></i>
+                        </button>
+                    </div>
+                </section>
+                <div class="below-game">
+                    <div class="chapter">
+                        <span class="chapter-number">01</span>
+                        <div>
+                            <h2>Campos verdes</h2>
+                            <p>Uma pequena aventura no Reino dos Cogumelos.</p>
+                        </div>
+                    </div>
+                    <span class="edition"
+                        >EDICAO EXPERIMENTAL <span>2026</span></span
+                    >
+                </div>
+            </main>
+            <footer class="site-footer">
+                <span>Um projeto para explorar, jogar e criar.</span
+                ><span
+                    >PROJETO DE ESTUDO <span class="footer-dot">/</span> NAO
+                    OFICIAL</span
+                >
+            </footer>
+            <div id="announcement" class="sr-only" aria-live="polite"></div>
+        </div>
+        <script type="module" src="/src/main.js"></script>
+    </body>
+</html>
