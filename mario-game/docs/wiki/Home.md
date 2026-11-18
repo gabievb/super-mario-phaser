@@ -13,6 +13,7 @@ bandeira. A última bandeira encerra a campanha.
 | ------------------------------------------- | --------------------------------------------- |
 | Instalar e jogar no meu computador          | [Instalação e execução](Instalacao.md)        |
 | Entender os comandos e as regras            | [Como jogar](Como-jogar.md)                   |
+| Aprender a estrutura do código passo a passo | [Estrutura para iniciantes](Estrutura-passo-a-passo.md) |
 | Conhecer cada mundo e seus desafios         | [Fases](Fases.md)                             |
 | Alterar o jogo ou executar os testes        | [Desenvolvimento](Desenvolvimento.md)         |
 | Subir o projeto para um repositório privado | [Repositório privado](Repositorio-privado.md) |
